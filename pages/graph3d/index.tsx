@@ -31,15 +31,17 @@ const NoSSRForceGraph = dynamic(() => import("../../lib/NoSSRForceGraph"), {
   ssr: false,
 });
 
-const formatData = (data) => {
-  const nodes = [];
-  const links = [];
+
+
+const formatData = (data :any) => {
+  const nodes: any = [];
+  const links: any= [];
 
   if (!data.applications) {
     return { nodes, links };
   }
 
-  data.applications.forEach((a) => {
+  data.applications.forEach((a:any) => {
     nodes.push({
       id: a.name,
       businessCriticality : a.businessCriticality,
@@ -93,12 +95,12 @@ export default function Home() {
     onNodeClick={(node, event) => {
       console.log(node);
     }}
-    nodeCanvasObject={(node, ctx, globalScale) => {
+    nodeCanvasObject={(node:any, ctx, globalScale) => {
       const label = node.id;
       const fontSize = 12/globalScale;
       ctx.font = `${fontSize}px Sans-Serif`;
       const textWidth = ctx.measureText(label).width;
-      const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
+      const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2) as [number, number]; // some padding
 
       ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
       ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
@@ -110,9 +112,9 @@ export default function Home() {
 
       node.__bckgDimensions = bckgDimensions; // to re-use in nodePointerAreaPaint
     }}
-    nodePointerAreaPaint={(node, color, ctx) => {
+    nodePointerAreaPaint={(node:any, color, ctx) => {
       ctx.fillStyle = color;
-      const bckgDimensions = node.__bckgDimensions;
+      const bckgDimensions  = node.__bckgDimensions as [number, number];
       bckgDimensions && ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
     }}
     />

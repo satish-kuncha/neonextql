@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Box } from "../components/Box";
 import Navbar from '../components/NavbarComponent';
 
+
 import {
   ApolloProvider,
   ApolloClient,
@@ -24,7 +25,7 @@ const createApolloClient = () => {
 
 const darkTheme = createTheme({type:"light"});
 
-function MyApp({Component, pageProps }) {
+function MyApp({Component, pageProps }: AppProps) {
   return (
     // 2. Use at the root of your app
     <ApolloProvider client={createApolloClient()}>
