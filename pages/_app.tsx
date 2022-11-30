@@ -1,6 +1,8 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { NextUIProvider, createTheme } from '@nextui-org/react';
+import { useState } from "react";
+import { Box } from "../components/Box";
+import Navbar from '../components/NavbarComponent';
 
 import {
   ApolloProvider,
@@ -27,7 +29,10 @@ function MyApp({Component, pageProps }) {
     // 2. Use at the root of your app
     <ApolloProvider client={createApolloClient()}>
       <NextUIProvider theme={darkTheme}>
-        <Component {...pageProps} />
+        <Navbar/>
+        <Box css={{ px: "$12", py: "$15", mt: "$12", "@xsMax": {px: "$10"}, maxWidth: "800px", margin: "0 auto" }}>
+          <Component {...pageProps} />
+        </Box>
       </NextUIProvider>
     </ApolloProvider>
   );

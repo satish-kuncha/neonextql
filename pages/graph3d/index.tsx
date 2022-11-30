@@ -27,7 +27,7 @@ const applicationsQuery = gql`
 `;
 
 
-const NoSSRForceGraph = dynamic(() => import("../lib/NoSSRForceGraph"), {
+const NoSSRForceGraph = dynamic(() => import("../../lib/NoSSRForceGraph"), {
   ssr: false,
 });
 
@@ -84,7 +84,7 @@ export default function Home() {
   return (
 
     <div>
-      This should also appear 
+      Temporarily showing the same graph 2d component 
 
     <NoSSRForceGraph
     nodeLabel={"id"}
