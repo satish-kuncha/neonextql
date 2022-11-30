@@ -20,7 +20,7 @@ const createApolloClient = () => {
   });
 };
 
-const darkTheme = createTheme({type:"dark"});
+const darkTheme = createTheme({type:"light"});
 
 function MyApp({Component, pageProps }) {
   return (

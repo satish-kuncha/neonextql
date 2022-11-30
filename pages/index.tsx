@@ -122,9 +122,7 @@ export default function Home() {
         </Navbar.Content>
       </Navbar>
 
-          <div>
-          This should also appear 
-
+        
         <NoSSRForceGraph
         nodeLabel={"id"}
         nodeAutoColorBy="businessCriticality"
@@ -155,9 +153,6 @@ export default function Home() {
           bckgDimensions && ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
         }}
         />
-
-
-      </div>
 
       { /*Main area*/}
 
