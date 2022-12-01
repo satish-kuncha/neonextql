@@ -93,8 +93,8 @@ export default function Home() {
       <ForceGraph3D
           graphData={graphDatax}
           nodeAutoColorBy="businessCriticality"
-          nodeThreeObject={(node :NodeObject) => {
-            const sprite = new SpriteText(node.id.toString());
+          nodeThreeObject={(node : any) => {
+            const sprite = new SpriteText(node['id']);
             sprite.color = node['color'];
             sprite.textHeight = 8;
             return sprite;
