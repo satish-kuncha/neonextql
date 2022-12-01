@@ -35,15 +35,15 @@ const ForceGraph3D = dynamic(() => import("../../lib/NoSSRForceGraph3D"), {
 
 
 
-const formatData = (data :GraphData) => {
-  const nodes: NodeObject = [];
-  const links: NodeObject= [];
+const formatData = (data : GraphData) => {
+  const nodes: any = [];
+  const links: any = [];
 
-  if (!data.applications) {
+  if (!data.hasOwnProperty('applications')) {
     return { nodes, links };
   }
 
-  data.applications.forEach((a:any) => {
+  data['applications'].forEach((a:any) => {
     nodes.push({
       id: a.name,
       businessCriticality : a.businessCriticality,
@@ -94,8 +94,8 @@ export default function Home() {
           graphData={graphDatax}
           nodeAutoColorBy="businessCriticality"
           nodeThreeObject={(node :NodeObject) => {
-            const sprite = new SpriteText(node.id);
-            sprite.color = node.color;
+            const sprite = new SpriteText(node.id.toString());
+            sprite.color = node['color'];
             sprite.textHeight = 8;
             return sprite;
           }}
