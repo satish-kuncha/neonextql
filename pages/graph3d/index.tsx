@@ -2,6 +2,8 @@ import dynamic from "next/dynamic";
 import { useQuery, useLazyQuery, gql } from "@apollo/client";
 import { useState } from "react";
 import _ from "lodash";
+import SpriteText from "three-spritetext";
+import {GraphData, NodeObject} from "react-force-graph-3d";
 
 const applicationsQuery = gql`
   query applications {
@@ -27,15 +29,15 @@ const applicationsQuery = gql`
 `;
 
 
-const NoSSRForceGraph = dynamic(() => import("../../lib/NoSSRForceGraph"), {
+const ForceGraph3D = dynamic(() => import("../../lib/NoSSRForceGraph3D"), {
   ssr: false,
 });
 
 
 
-const formatData = (data :any) => {
-  const nodes: any = [];
-  const links: any= [];
+const formatData = (data :GraphData) => {
+  const nodes: NodeObject = [];
+  const links: NodeObject= [];
 
   if (!data.applications) {
     return { nodes, links };
@@ -74,10 +76,10 @@ const formatData = (data :any) => {
 };
 
 export default function Home() {
-  const [graphData, setGraphData] = useState({ nodes: [], links: [] });
+  const [graphDatax, setGraphData] = useState({ nodes: [], links: [] });
   const { data } = useQuery(applicationsQuery, {
     onCompleted: (data) => { 
-      console.log("=the data is " + data) 
+      console.log("=the data is ", data) 
       setGraphData(formatData(data));
     },
   });
@@ -88,38 +90,16 @@ export default function Home() {
     <div>
       Temporarily showing the same graph 2d component 
 
-    <NoSSRForceGraph
-    nodeLabel={"id"}
-    nodeAutoColorBy="businessCriticality"
-    graphData={graphData}
-    onNodeClick={(node, event) => {
-      console.log(node);
-    }}
-    nodeCanvasObject={(node:any, ctx, globalScale) => {
-      const label = node.id;
-      const fontSize = 12/globalScale;
-      ctx.font = `${fontSize}px Sans-Serif`;
-      const textWidth = ctx.measureText(label).width;
-      const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2) as [number, number]; // some padding
-
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-      ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
-
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = node.color;
-      ctx.fillText(label, node.x, node.y);
-
-      node.__bckgDimensions = bckgDimensions; // to re-use in nodePointerAreaPaint
-    }}
-    nodePointerAreaPaint={(node:any, color, ctx) => {
-      ctx.fillStyle = color;
-      const bckgDimensions  = node.__bckgDimensions as [number, number];
-      bckgDimensions && ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
-    }}
-    />
-
-
+      <ForceGraph3D
+          graphData={graphDatax}
+          nodeAutoColorBy="businessCriticality"
+          nodeThreeObject={(node :NodeObject) => {
+            const sprite = new SpriteText(node.id);
+            sprite.color = node.color;
+            sprite.textHeight = 8;
+            return sprite;
+          }}
+        />
   </div>
 
   );
