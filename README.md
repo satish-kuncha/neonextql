@@ -12,11 +12,12 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+/api/graphql - mapped for Neo4jGraphql flow via Apollo 
 
 ## Learn More
 
@@ -34,3 +35,13 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 Ref for Nextui - coopers  https://www.thecoopercodes.com/
+
+Further Todo:
+1. Pass Types via Module federation
+2. Integrate with Medusa
+3. Partytown to reduce any 3rd Party integrations
+4. Add NextjsAuth authentication flow 
+5. Have Nx as the mono repo
+6. Enhance the Graphql queries for new charts 
+7. Once the types are integrated, integrate with new neodash changes
+
