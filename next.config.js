@@ -20,7 +20,7 @@ const nextConfig = {
         name: 'host',
         filename : "temp",
         remotes: {
-          remoteNeodash: 'remoteNeodash@http://localhost:3005/remoteEntry.js',
+          remoteNeodash: 'remoteNeodash@https://cloned-neo-dash.vercel.app/remoteEntry.js',
         },
       }),
       
