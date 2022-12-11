@@ -34,13 +34,24 @@ const RemoteComponentPie = dynamic(() => import('remoteNeodash/RemotePie'), {
 export default function Home() {
   return (
     <>
-       Remote React Components - Loaded Dynamically via Module Federation
+       <b><i>Remote React Components - Loaded Dynamically via Module Federation </i></b>
+
+       <br></br>
+      <br></br>
+      <br></br>
       <ReactRemoteComponent></ReactRemoteComponent>
+      <br></br>
+      <br></br>
+      <br></br>
       <div style={{height:'500px',width:'500px'}} >
+      <b><i> Node Types Pie Chart</i></b>
         <RemoteComponentPie {...pieProps} />
        </div>
-
+       <br></br>
+       <br></br>
+       <br></br>
        <div style={{height:'500px',width:'500px'}} >
+       <b><i> Relationship Types Bar Chart</i></b>
         <RemoteComponentBar {...barProps} />
        </div>
        </>
