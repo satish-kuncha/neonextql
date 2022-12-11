@@ -87,8 +87,6 @@ export default function Home() {
 
   return (
 
-    <div>
-      Temporarily showing the same graph 2d component 
 
       <ForceGraph3D
           graphData={graphDatax}
@@ -100,7 +98,6 @@ export default function Home() {
             return sprite;
           }}
         />
-  </div>
 
   );
 }

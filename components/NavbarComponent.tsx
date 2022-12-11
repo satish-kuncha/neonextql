@@ -8,6 +8,10 @@ const NavbarComponent = () => {
     function show3dpage() {
         router.push("/graph3d"); // localhost:3000/graph3d
     }
+
+    function showCardpage() {
+        router.push("/cardview"); // localhost:3000/card
+    }
     
     function show2dpage() {
         router.push("/graph2d"); // localhost:3000/graph2d
@@ -16,17 +20,21 @@ const NavbarComponent = () => {
     return (
         <Navbar isBordered isCompact>
             <Navbar.Brand as={Link} href="/">
-                NeoNext
+                NeoNext - Components via Module Federation
             </Navbar.Brand>
             <Navbar.Content hideIn="xs" variant="highlight-rounded">
-                <Navbar.Link href="/graph2d">Graph2d</Navbar.Link>
+            <Navbar.Item>
+                        <Button auto flat onPress={() => showCardpage()}>
+                                 Dashboard Section   - As Iframe
+                        </Button>
+                    </Navbar.Item>
             </Navbar.Content>
 
             <Navbar.Content>
                 <>
                     <Navbar.Item>
                         <Button auto flat onPress={() => show3dpage()}>
-                          Graph 3d 
+                            3d Cloud (Neo4j DB call via graphql) 
                         </Button>
                     </Navbar.Item>
                 </>
