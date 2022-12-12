@@ -45,4 +45,5 @@ Further Todo:
 5. Have Nx as the mono repo
 6. Enhance the Graphql queries for new charts 
 7. Once the types are integrated, integrate with new neodash changes
+8. A texbox for userInput - run it through aws comprehend - run it through neo4jgraphql to get result
 
